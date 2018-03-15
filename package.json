@@ -10,8 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "@google-cloud/dlp": "^0.2.0",
+    "@google-cloud/logging": "^1.1.7",
     "always-tail": "^0.2.0",
+    "fluent-logger": "^2.6.2",
     "mime": "^2.2.0",
+    "winston": "^2.4.1",
     "yargs": "^11.0.0"
   }
 }
