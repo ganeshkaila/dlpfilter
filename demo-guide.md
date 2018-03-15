@@ -2,7 +2,7 @@
 
 ## READY:
 #### Things to remember:
-1. It is assumed that your running the commands inside `dlpfilter/` directory.
+1. It is assumed that the commands will be run under `dlpfilter/` directory.
 2. The output/result log messages will apprear under ***GCE VM Instance, dlpfilter-tool > dlpfilter*** in stackdriver logging account.
 
 #### For new applications,
@@ -43,7 +43,7 @@
             
     > The above command will print the text strings inside the files to stackdriver logging while redacting only email address.
     
-    Now, Open another console session and try to send stream some message to file1.txt file
+    Now, Open another console session and try to stream some message to file1.txt file
     
         $ echo "My phone number is (223) 456-7890 and my email address is gary@somedomain.com." >> resources/file1.txt
     
@@ -54,11 +54,19 @@
     Command#1:
 
         $ node dlpfilter.js stackdriver-logging logs -l my-test-log -t EMAIL_ADDRESS
+
+    Command#2:
+
+        $ node dlpfilter.js stackdriver-logging logs -l my-test-log -t EMAIL_ADDRESS US_MALE_NAME
+
+    Command#3:
+
+        $ node dlpfilter.js stackdriver-logging logs -l my-test-log -t EMAIL_ADDRESS US_MALE_NAME PHONE_NUMBER
             
-    > The above command will read the log messages from another stackdriver logging (my-test-log) to our stackdriver logging (dlpfilter). You can check the `my-test-log` logging name under ***Global***
+    > The above commands will read the log messages from another stackdriver logging (my-test-log) to our stackdriver logging (dlpfilter). You can check the `my-test-log` logging name under ***Global***
 
 ## TODO:
-For already developed projects,
+#### For existing applications
 
 1. Streaming log messages from a particular log name in the stackdriver logging.
 2. Existing log messages from the log files stored in the GCS bucket
