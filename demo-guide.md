@@ -7,6 +7,7 @@
 
 #### For new applications,
 1. Sending the original and filtered log messages.
+
     Command#1:
 
        $ node app.js
@@ -15,6 +16,7 @@
     
 #### For existing applications,
 1. Existing log messages from the application log files
+
     Command#1:
 
         $ node dlpfilter.js stackdriver-logging files \
@@ -32,6 +34,7 @@
     > The above command will print the text strings inside the files to stackdriver logging while redacting both email addressa and phone number.
 
 2. Streaming log messages from the application log files
+
     Command#1:
 
         $ node dlpfilter.js stackdriver-logging files \
@@ -47,6 +50,7 @@
     > Now, you can see streamed log message under console output as well as stackdriver logging.
 
 3. Existing log messages from a particular log name in the stackdriver logging
+
     Command#1:
 
         $ node dlpfilter.js stackdriver-logging logs -l my-test-log -t EMAIL_ADDRESS
