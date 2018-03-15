@@ -44,7 +44,7 @@
             
     > The above command will print the text strings inside the files to stackdriver logging while redacting only email address.
     
-    Now, Open another console session and try to stream some message to file1.txt file
+    Now, Open another console session and try to stream some message to `file1.txt` file. Don't forget to run the following command from `dlpfilter/` directory.
     
         $ echo "My phone number is (223) 456-7890 and my email address is gary@somedomain.com." >> resources/file1.txt
     
