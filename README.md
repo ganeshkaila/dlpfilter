@@ -12,12 +12,12 @@ You must have the following setup on your environment:
     2) Assuming that you're performing the following commands under `dlpfilter/` directory.
 - To install nodejs, do the following:
 
-      $ chmod +x ./scripts/nodesource_setup.sh
-      $ ./scripts/nodesource_setup.sh
+      $ sudo chmod +x ./scripts/nodesource_setup.sh
+      $ sudo ./scripts/nodesource_setup.sh
 - To install Google's fluentd logger agent, do the following:
 
-      $ chmod +x ./scripts/install-logging-agent.sh
-      $ ./scripts/install-logging-agent.sh
+      $ sudo chmod +x ./scripts/install-logging-agent.sh
+      $ sudo ./scripts/install-logging-agent.sh
 
 ### how to use dlpfilter
 The dlpfilter tool can filter application log messages and other stackdriver logging messages, forwards them to configured stackdriver logging.

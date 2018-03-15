@@ -85,7 +85,7 @@ function redactFromExistingFiles(sourceFiles, infoTypes) {
   sourceFiles.forEach(function(file) {
     new Tail(file, '\n')
       .on('line', function(string) {
-        dlpfileterLogging.info(string, () => {});
+        dlpfileterLogging.info(string, infoTypes, () => {});
       });
     });
 }
@@ -106,9 +106,9 @@ function redactFromStackdriverLogs(logNames, infoTypes) {
 
         entries.forEach(entry => {
           if (entry.metadata.payload === 'textPayload') {
-              dlpfileterLogging.info(entry.data, () => {});
+              dlpfileterLogging.info(entry.data, infoTypes, () => {});
           } else if(entry.metadata.payload === 'jsonPayload') {
-              dlpfileterLogging.info(JSON.stringify(entry.data), () => {});
+              dlpfileterLogging.info(JSON.stringify(entry.data), infoTypes, () => {});
         }
       });
     });

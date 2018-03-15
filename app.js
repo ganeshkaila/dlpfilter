@@ -21,7 +21,10 @@ var logger = new Logger.Logger();
 // Instantiates a dlpLogger instance
 var dlpLopgger = new DlpLogger.DlpLogger();
 
+// The infoTypes of information to redact
+const infoTypes = [{ name: 'EMAIL_ADDRESS' }, { name: 'PHONE_NUMBER' }, { name: 'US_MALE_NAME' }];
+
 var logText = 'My name is Robert, My email address is rob@email.com';
 
 logger.info('Original: ' + logText, function(){});
-dlpLopgger.info('dlpfilter: ' + logText, function(){});
+dlpLopgger.info('dlpfilter: ' + logText, infoTypes, function(){});
