@@ -4,6 +4,7 @@
 #### Things to remember:
 1. It is assumed that the commands will be run under `dlpfilter/` directory.
 2. The output/result log messages will apprear under ***GCE VM Instance, dlpfilter-tool > dlpfilter*** in stackdriver logging account.
+3. Supported infoTypes for the dlpfilter as given [here](https://cloud.google.com/dlp/docs/infotypes-reference).
 
 #### For new applications,
 1. Sending the original and filtered log messages.
