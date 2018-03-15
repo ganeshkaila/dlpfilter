@@ -2,12 +2,12 @@
 
 ## READY:
 #### Things to remember:
-1. To test these features, it is assumed that your running the commands inside `dlpfilter/` directory.
-2. The output/resulting log messages will apprear under ***GCE VM Instance, dlpfilter-tool > dlpfilter***
+1. It is assumed that your running the commands inside `dlpfilter/` directory.
+2. The output/result log messages will apprear under ***GCE VM Instance, dlpfilter-tool > dlpfilter*** in stackdriver logging account.
 
 #### For new applications,
 1. Sending the original and filtered log messages.
-Command:
+    Command#1:
 
        $ node app.js
        
@@ -56,5 +56,5 @@ Command:
 ## TODO:
 For already developed projects,
 
-1. ~~Streaming log messages from a particular log name in the stackdriver logging~~
+1. Streaming log messages from a particular log name in the stackdriver logging.
 2. Existing log messages from the log files stored in the GCS bucket
