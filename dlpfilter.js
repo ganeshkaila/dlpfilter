@@ -56,7 +56,7 @@ function redactFromExistingFiles(sourceFiles, infoTypes) {
   const redactionConfigs = infoTypes.map(infoType => {
     return {
       infoType: infoType,
-      replaceWith: 'REDACTED',
+      replaceWith: infoType.name,
     };
   });
 
@@ -95,8 +95,6 @@ function redactFromStackdriverLogs(logNames, infoTypes) {
   const dlp = new DLP.DlpServiceClient();
   const dlpfileterLogging = new DlpfilterLogging.DlpLogger();
   const stackdriverLogging = new Logging();
-
-  var string;
 
   logNames.forEach(function(logName) {
       stackdriverLogging.log(logName)
