@@ -96,21 +96,41 @@ function redactFromStackdriverLogs(logNames, infoTypes) {
   const dlpfileterLogging = new DlpfilterLogging.DlpLogger();
   const stackdriverLogging = new Logging();
 
-  logNames.forEach(function(logName) {
+  var prevInsertId, prevLen;
+  var newEntries = [];
+
+  setInterval(function () {
+    logNames.forEach(function(logName) {
       stackdriverLogging.log(logName)
-      .getEntries()
+      .getEntries({orderBy: 'timestamp'})
       .then(results => {
         const entries = results[0];
-
-        entries.forEach(entry => {
-          if (entry.metadata.payload === 'textPayload') {
-              dlpfileterLogging.info(entry.data, infoTypes, () => {});
-          } else if(entry.metadata.payload === 'jsonPayload') {
-              dlpfileterLogging.info(JSON.stringify(entry.data), infoTypes, () => {});
+        for (var index = 0; index < entries.length; index++) {
+          if(prevInsertId == null) {
+            newEntries = entries.slice(0,entries.length);
+          } else if (prevInsertId === entries[index].metadata.insertId && prevLen < entries.length) {
+	    newEntries = entries.slice(index + 1, entries.length);
+          } else {
+            continue;
+	  }
         }
+
+	if (newEntries.length !== 0) {
+          newEntries.forEach((entry, index) => {
+            if (entry.metadata.payload === 'textPayload') {
+              dlpfileterLogging.info(entry.data, infoTypes, () => {});
+            } else if(entry.metadata.payload === 'jsonPayload') {
+              dlpfileterLogging.info(JSON.stringify(entry.data), infoTypes, () => {});
+            } 
+            prevInsertId = entry.metadata.insertId;
+          });
+          prevLen = entries.length;
+          newEntries = [];
+          return;
+        } 
       });
     });
-  });
+  }, 10000);
 }
 
 const cli = require(`yargs`)

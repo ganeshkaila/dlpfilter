@@ -11,7 +11,9 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ **/
+
+'use strict';
 
 var Logger = require('./lib/logger.js');
 // Imports the DLP Logger library
@@ -19,12 +21,24 @@ var DlpLogger = require('./lib/dlpfilterLogging.js');
 
 var logger = new Logger.Logger();
 // Instantiates a dlpLogger instance
-var dlpLopgger = new DlpLogger.DlpLogger();
+var dlpLogger = new DlpLogger.DlpLogger();
 
 // The infoTypes of information to redact
-const infoTypes = [{ name: 'EMAIL_ADDRESS' }, { name: 'PHONE_NUMBER' }, { name: 'US_MALE_NAME' }];
+const infoTypes = [{ name: 'EMAIL_ADDRESS' }, { name: 'PHONE_NUMBER' }, { name: 'PERSON_NAME' }];
 
 var logText = 'My name is Robert, My email address is rob@email.com';
 
-logger.info('Original: ' + logText, function(){});
-dlpLopgger.info('dlpfilter: ' + logText, infoTypes, function(){});
+if (process.argv.length === 2 ) {
+  logger.info('Original: ' + logText, ()=>{});
+  dlpLogger.info('dlpfilter: ' + logText, infoTypes, ()=>{});
+} else if (process.argv.length === 3) {
+  logger.info('Original: ' + process.argv[2], ()=>{});
+  dlpLogger.info('dlpfilter: ' + process.argv[2], infoTypes, ()=>{});
+} else {
+  console.log(
+    'Usage: ' + 
+       '\n\tnode app.js' +
+       '\n\tnode app.js "My name is Robert, My email address is rob@email.com,"'
+  );
+}
+

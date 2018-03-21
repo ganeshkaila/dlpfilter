@@ -69,5 +69,5 @@
 ## TODO:
 #### For existing applications
 
-1. Streaming log messages from a particular log name in the stackdriver logging.
-2. Existing log messages from the log files stored in the GCS bucket
+1. Tokenization of PII text and retrieval of tokenized PII text.
+2. Existing log messages from the log files stored in the GCS bucket.
