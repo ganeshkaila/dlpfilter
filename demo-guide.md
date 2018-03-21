@@ -58,13 +58,13 @@
 
     Command#2:
 
-        $ node dlpfilter.js stackdriver-logging logs -l my-test-log -t EMAIL_ADDRESS US_MALE_NAME
+        $ node dlpfilter.js stackdriver-logging logs -l my-test-log -t EMAIL_ADDRESS PERSON_NAME
 
     Command#3:
 
-        $ node dlpfilter.js stackdriver-logging logs -l my-test-log -t EMAIL_ADDRESS US_MALE_NAME PHONE_NUMBER
+        $ node dlpfilter.js stackdriver-logging logs -l my-test-log -t EMAIL_ADDRESS PERSON_NAME PHONE_NUMBER
             
-    > The above commands will read the log messages from another stackdriver logging (my-test-log) to our stackdriver logging (dlpfilter). You can check the `my-test-log` logging name under ***Global***
+    > The above commands will read the log messages from another stackdriver logging (`my-test-log`) to our stackdriver logging (`dlpfilter`). You can check the `my-test-log` logging name under ***Global***
 
 ## TODO:
 #### For existing applications
