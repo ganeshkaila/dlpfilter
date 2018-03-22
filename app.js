@@ -24,21 +24,33 @@ var logger = new Logger.Logger();
 var dlpLogger = new DlpLogger.DlpLogger();
 
 // The infoTypes of information to redact
-const infoTypes = [{ name: 'EMAIL_ADDRESS' }, { name: 'PHONE_NUMBER' }, { name: 'PERSON_NAME' }];
+const infoTypes = [{
+    name: 'EMAIL_ADDRESS'
+}, {
+    name: 'PHONE_NUMBER'
+}, {
+    name: 'PERSON_NAME'
+}];
+
+const opts = {
+    end: {
+        end: true
+    },
+    verbose: true
+};
 
 var logText = 'My name is Robert, My email address is rob@email.com';
 
-if (process.argv.length === 2 ) {
-  logger.info('Original: ' + logText, ()=>{});
-  dlpLogger.info('dlpfilter: ' + logText, infoTypes, ()=>{});
+if (process.argv.length === 2) {
+    logger.info(logText, opts, () => {});
+    dlpLogger.info(logText, opts, infoTypes, () => {});
 } else if (process.argv.length === 3) {
-  logger.info('Original: ' + process.argv[2], ()=>{});
-  dlpLogger.info('dlpfilter: ' + process.argv[2], infoTypes, ()=>{});
+    logger.info(process.argv[2], opts, () => {});
+    dlpLogger.info(process.argv[2], opts, infoTypes, () => {});
 } else {
-  console.log(
-    'Usage: ' + 
-       '\n\tnode app.js' +
-       '\n\tnode app.js "My name is Robert, My email address is rob@email.com,"'
-  );
+    console.log(
+        'Usage: ' +
+        '\n\tnode app.js' +
+        '\n\tnode app.js "My name is Robert, My email address is rob@email.com."'
+    );
 }
-
